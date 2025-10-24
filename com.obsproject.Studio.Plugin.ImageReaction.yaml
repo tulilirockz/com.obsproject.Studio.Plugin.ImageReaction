@@ -1,0 +1,37 @@
+id: com.obsproject.Studio.Plugin.ImageReaction
+branch: stable
+runtime: com.obsproject.Studio
+runtime-version: stable
+sdk: org.kde.Sdk//6.8
+build-extension: true
+separate-locales: false
+build-options:
+  prefix: /app/plugins/ImageReaction
+  # cflags: -I/app/plugins/ImageReaction/include
+  # cxxflags: -I/app/plugins/ImageReaction/include
+  # ldflags: -L/app/plugins/ImageReaction/lib
+  # libdir: /app/plugins/ImageReaction/lib
+  # prepend-path: /app/plugins/ImageReaction/bin
+  # prepend-ld-library-path: /app/plugins/ImageReaction/lib
+  # prepend-pkg-config-path: /app/plugins/ImageReaction/lib/pkgconfig
+  strip: true
+
+modules:
+  - name: info-writer-capture-plugin
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      # - -DCMAKE_INSTALL_PREFIX="/app/plugins/ImageReaction/lib/obs-plugins"
+      - -DLIBOBS_INCLUDE_DIR=/app/include/obs
+    # post-install:
+    #   - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo
+    sources:
+      - type: git
+        url: https://github.com/scaledteam/obs-image-reaction.git
+        commit: 4f3665225f529f0817be3e08a9c1e209e3de5e4a
+      - type: patch
+        path: 0001-fix-modernize-finding-libOBS.patch
+      - type: file
+        path: com.obsproject.Studio.Plugin.ImageReaction.metainfo.xml
+    cleanup:
+      - /app/plugins/ImageReaction/include

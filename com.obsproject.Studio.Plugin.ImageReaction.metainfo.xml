@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+  <id>com.obsproject.Studio.Plugin.ImageReaction</id>
+  <extends>com.obsproject.Studio</extends>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <name>ImageReaction</name>
+  <summary>OBS Plugin with image that reacts to sound source.</summary>
+  <url type="homepage">https://github.com/scaledteam/obs-image-reaction</url>
+  <releases>
+    <release version="1.2.2" date="2025-03-05"/>
+  </releases>
+</component>
